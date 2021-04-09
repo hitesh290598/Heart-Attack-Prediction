@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Home | Heart Attack Prediction</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="icon" href="img/logo.png">
+</head>
+<style>
+ .footer {
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+  }
+  .container {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
+  }
+</style>
+<body>
+<div class="jumbotron text-center">
+  <h1>Heart Attack Prediction using ML</h1>
+  <p>Predictive analysis</p> 
+</div>
+ <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+        <form action="{{ url_for('predict')}}" method="post">
+            <table class='table'>
+                <tr><td>Age of the patient</td>
+                <td><input id="first" name="age" type="number" class="form-control" ></td></tr>
+                <tr><td>Sex of the patient</td>
+                <td><select name="sex" id="Sex_P" required="required" class="form-control">
+                  <option value="1">Male</option>
+                  <option value="0">Female</option>
+              </select></td></tr>
+                <tr><td>Chest Pain Type</td>
+                <td><select name="cp" id="cpt" required="required" class="form-control">
+                  <option value="1">Typical Angina</option>
+                  <option value="2">Atypical Angina</option>
+                  <option value="3">Non-anginal pain</option>
+                  <option value="4">Asymptomatic</option>
+              </select></td></tr>
+                <tr><td>Resting Blood Preasure (in mm Hg)</td>
+                <td><input id="fourth" name="trtbps" type="number" required="required" class="form-control"></td></tr>
+                <tr><td>Cholestoral in mg/dl</td>
+                <td><input id="three" name="chol" type="number" required="required" class="form-control"></td></tr>
+                <tr><td>fasting blood sugar > 120 mg/dl</td>
+                <td><select name="fbs" id="two" required="required" class="form-control">
+                <option value="1">True</option>
+                <option value="0">False</option>
+            </select></td></tr>
+                <tr><td>Resting Electrocardiographic Results</td>
+                <td><select name="restecg" id="one" required="required" class="form-control">
+                <option value="0">Normal</option>
+                <option value="1">having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)</option>
+                <option value="2">showing probable or definite left ventricular hypertrophy by Estes' criteria</option>
+            </select></td></tr>
+                <tr><td>Maximum Heart Rate Achieved</td>
+                <td><input id="first" name="thalach" type="number" required="required" class="form-control" ></td></tr>
+                <tr><td>exercise induced angina</td>
+                  <td><select name="exng" id="seven" required="required" class="form-control">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select></td></tr>
+                <tr><td>Previous Peak</td>
+                  <td><input id="eight" name="oldpeak" type="number" required="required" class="form-control" ></td></tr>
+                <tr><td>Slope</td>
+                  <td><input id="nine" name="slp" type="number" required="required" class="form-control" ></td></tr>
+                <tr><td>number of major vessels (0-3)</td>
+                  <td><input id="eleven" name="caa" type="number" required="required" class="form-control" ></td></tr>
+                <tr><td>Thall rate</td>
+                  <td><input id="tweleve" name="thall" type="number" required="required" class="form-control" ></td></tr>
+                <tr><td colspan="2" align="center"><button id="sub" type="submit" class="btn btn-primary">Predict</button></td></tr>
+                <tr><td>Patiant Status</td><td class="text-success"><strong>{{ prediction_text }}</strong></td></tr>
+            </table>
+        </form>
+    </div>
+  </div>
+</div>
+  <footer class="footer">
+      <div class="container">
+        <span class="text-muted">© 2021 Copyright: Design and Developed by Hitesh Kale</span>
+      </div>
+    </footer>
+</body>
+</html>
